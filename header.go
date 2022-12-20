@@ -20,13 +20,8 @@ var (
 	HeaderAsertoSessionIDLowercase = CtxKey(strings.ToLower(string(HeaderAsertoSessionID)))
 )
 
-func ExtractTenantID(ctx context.Context) string {
-	id, ok := ctx.Value(HeaderAsertoTenantID).(string)
-	if !ok {
-		return ""
-	}
-
-	return id
+func ContextWithAccountID(ctx context.Context, accountID string) context.Context {
+	return context.WithValue(ctx, HeaderAsertoAccountID, accountID)
 }
 
 func ContextWithTenantID(ctx context.Context, tenantID string) context.Context {
@@ -43,6 +38,15 @@ func ContextWithSessionID(ctx context.Context, sessionID string) context.Context
 
 func ExtractAccountID(ctx context.Context) string {
 	id, ok := ctx.Value(HeaderAsertoAccountID).(string)
+	if !ok {
+		return ""
+	}
+
+	return id
+}
+
+func ExtractTenantID(ctx context.Context) string {
+	id, ok := ctx.Value(HeaderAsertoTenantID).(string)
 	if !ok {
 		return ""
 	}
