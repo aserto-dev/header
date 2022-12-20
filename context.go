@@ -41,6 +41,19 @@ func KnownContextValueStrings(ctx context.Context) map[string]interface{} {
 	return result
 }
 
+func KnownContextValues(ctx context.Context) map[interface{}]interface{} {
+	result := map[interface{}]interface{}{}
+
+	for _, k := range knownValueNames {
+		v := extract(ctx, k)
+		if v != "" {
+			result[k] = v
+		}
+	}
+
+	return result
+}
+
 func extract(ctx context.Context, key CtxKey) string {
 	id, ok := ctx.Value(key).(string)
 	if !ok {
