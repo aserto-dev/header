@@ -14,7 +14,7 @@ func IncomingHeaderMatcher(key string) (string, bool) {
 		string(HeaderAsertoAccountID),
 		string(HeaderAsertoRequestID),
 		string(HeaderAsertoTenantKey),
-		string(HeaderAsertoModelRequest),
+		string(HeaderAsertoManifestRequest),
 		headers.IfMatch,
 		headers.IfNoneMatch:
 		return key, true
