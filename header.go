@@ -12,14 +12,12 @@ var (
 	HeaderAsertoTenantKey = CtxKey(textproto.CanonicalMIMEHeaderKey("Aserto-Api-Key"))
 	HeaderAsertoRequestID = CtxKey(textproto.CanonicalMIMEHeaderKey("Aserto-Request-Id"))
 	HeaderAsertoSessionID = CtxKey(textproto.CanonicalMIMEHeaderKey("Aserto-Session-Id"))
-	HeaderAsertoUpdatedAt = CtxKey(textproto.CanonicalMIMEHeaderKey("Aserto-Updated-At"))
 
 	HeaderAsertoTenantIDLowercase  = CtxKey(strings.ToLower(string(HeaderAsertoTenantID)))
 	HeaderAsertoAccountIDLowercase = CtxKey(strings.ToLower(string(HeaderAsertoAccountID)))
 	HeaderAsertoTenantKeyLowercase = CtxKey(strings.ToLower(string(HeaderAsertoTenantKey)))
 	HeaderAsertoRequestIDLowercase = CtxKey(strings.ToLower(string(HeaderAsertoRequestID)))
 	HeaderAsertoSessionIDLowercase = CtxKey(strings.ToLower(string(HeaderAsertoSessionID)))
-	HeaderAsertoUpdatedAtLowercase = CtxKey(strings.ToLower(string(HeaderAsertoUpdatedAt)))
 )
 
 func ContextWithAccountID(ctx context.Context, accountID string) context.Context {
