@@ -2,7 +2,7 @@ package header
 
 import (
 	"github.com/go-http-utils/headers"
-	"github.com/grpc-ecosystem/grpc-gateway/runtime"
+	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 )
 
 // IncomingHeaderMatcher is a matcher that makes it so that HTTP clients do not have to prefix
