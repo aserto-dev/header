@@ -1,8 +1,8 @@
 package header
 
-import "github.com/grpc-ecosystem/grpc-gateway/runtime"
+import "github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 
-// OutgoingHeaderMatcher filters headers that are allowed to reach the client
+// OutgoingHeaderMatcher filters headers that are allowed to reach the client.
 func OutgoingHeaderMatcher(key string) (string, bool) {
 	switch key {
 	case string(HeaderAsertoRequestIDLowercase):

@@ -27,7 +27,7 @@ func IsValidUUID(uid string) bool {
 	return err == nil
 }
 
-// KnownContextValueStrings is the same as KnownContextValues, but uses string keys (useful for logging)
+// KnownContextValueStrings is the same as KnownContextValues, but uses string keys (useful for logging).
 func KnownContextValueStrings(ctx context.Context) map[string]interface{} {
 	result := map[string]interface{}{}
 
