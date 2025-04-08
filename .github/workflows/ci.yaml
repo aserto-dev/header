@@ -1,3 +1,4 @@
+---
 name: ci
 
 on:
@@ -7,33 +8,20 @@ on:
     # Publish `main` as Docker `latest` image.
     branches:
       - main
-      - release-*
   # Run tests for PRs
   pull_request:
-    branches:
-      - main
-      - beta
-      - release-*
+
 env:
   VAULT_ADDR: https://vault.eng.aserto.com/
   PRE_RELEASE: ${{ github.ref == 'refs/heads/main' && 'development' || '' }}
-  GO_VERSION: "1.22"
-  GO_LANGCI_LINT_VERSION: "v1.61.0"
-  GO_TESTSUM_VERSION: "1.11.0"
+  GO_VERSION: 1.24
+  GO_LANGCI_LINT_VERSION: v2.0.2
+  GO_TESTSUM_VERSION: 1.12.1
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      -
-        name: Read Configuration
-        uses: hashicorp/vault-action@v3
-        id: vault
-        with:
-          url: ${{ env.VAULT_ADDR }}
-          token: ${{ secrets.VAULT_TOKEN }}
-          secrets: |
-            kv/data/github  "SSH_PRIVATE_KEY"     | SSH_PRIVATE_KEY;
       -
         uses: actions/checkout@v4
         with:
@@ -45,10 +33,10 @@ jobs:
           go-version: ${{ env.GO_VERSION }}
       -
         name: Lint
-        uses: golangci/golangci-lint-action@v6
+        uses: golangci/golangci-lint-action@v7
         with:
           version: ${{ env.GO_LANGCI_LINT_VERSION }}
-          args: --timeout=30m
+          args: --timeout=5m
       -
         name: Test Setup
         uses: autero1/action-gotestsum@v2.0.0
