@@ -30,6 +30,8 @@ deps: info install-svu install-golangci-lint install-gotestsum
 .PHONY: lint
 lint:
 	@echo -e "$(ATTN_COLOR)==> $@ $(NO_COLOR)"
+	@${EXT_BIN_DIR}/golangci-lint config path
+	@${EXT_BIN_DIR}/golangci-lint config verify
 	@${EXT_BIN_DIR}/golangci-lint run --config ${PWD}/.golangci.yaml
 
 .PHONY: test

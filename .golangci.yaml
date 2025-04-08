@@ -49,5 +49,3 @@ formatters:
     - gofmt
     - gofumpt
     - goimports
-  disable:
-    - gci  # use gofumpt
